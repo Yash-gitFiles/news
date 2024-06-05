@@ -1,0 +1,21 @@
+.container {
+  max-width: 280px;
+  margin: 32px;
+  border: 2px solid black;
+}
+
+.imgContainer {
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.imgContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.descContainer {
+  border: 2px solid black;
+}

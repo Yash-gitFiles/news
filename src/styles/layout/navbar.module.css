@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logoContainer img {
+  height: 50px;
+  width: 50px;
+}
+
+.logoContainer p {
+  font-weight: 800;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+
+.searchContainer input {
+  padding: 6px;
+  border-radius: 8px;
+  border: 0.5px solid black;
+}
+.searchContainer button {
+  padding: 6px;
+  background-color: #e60000;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  border: 0.5px solid black;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
