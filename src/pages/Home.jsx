@@ -3,9 +3,7 @@ import NewsCard from "../components/home/NewsCard";
 import { getNews } from "../services/apiServices";
 import styles from "../styles/home/home.module.css";
 
-function Home() {
-  const [news, setNews] = useState(null);
-
+function Home({ news, setNews }) {
   useEffect(() => {
     getNews().then((data) => {
       setNews(data);
@@ -14,14 +12,14 @@ function Home() {
 
   if (!news) return null;
   return (
-    <>
-      Total News : {news.totalResults}
+    <div className={styles.containerOuter}>
+      <span> Total News : </span> {news.articles.length}
       <div className={styles.container}>
         {news.articles.map((value, index) => {
           return <NewsCard key={index} news={value} />;
         })}
       </div>
-    </>
+    </div>
   );
 }
 

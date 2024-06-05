@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import { getNews } from "./services/apiServices";
+import DetailsPage from "./pages/DetailsPage";
 
 function App() {
+  const [query, setQuery] = useState("");
+  const [news, setNews] = useState(null);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Layout
+              setQuery={setQuery}
+              query={query}
+              news={news}
+              setNews={setNews}
+            />
+          }
+        >
+          <Route
+            index
+            element={
+              <Home
+                setQuery={setQuery}
+                query={query}
+                news={news}
+                setNews={setNews}
+              />
+            }
+          />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="/details/:name" element={<DetailsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

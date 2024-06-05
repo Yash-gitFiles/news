@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 16px;
+  border-bottom: 2px solid #e60000;
 }
 
 .logoContainer {
@@ -28,14 +29,6 @@
 
 .searchContainer input {
   padding: 6px;
-  border-radius: 8px;
-  border: 0.5px solid black;
-}
-.searchContainer button {
-  padding: 6px;
-  background-color: #e60000;
-  border: none;
-  color: white;
   border-radius: 8px;
   border: 0.5px solid black;
 }

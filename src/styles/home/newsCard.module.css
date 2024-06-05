@@ -1,13 +1,15 @@
 .container {
-  max-width: 280px;
-  margin: 32px;
+  margin: 16px;
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 .imgContainer {
   height: 100%;
   width: 100%;
   border: 2px solid black;
+  padding: 8px;
 }
 
 .imgContainer img {
@@ -18,4 +20,9 @@
 
 .descContainer {
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 4px;
 }
+
