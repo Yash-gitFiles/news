@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import { getNews } from "./services/apiServices";
 import DetailsPage from "./pages/DetailsPage";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -18,12 +19,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Layout
-              setQuery={setQuery}
-              query={query}
-              news={news}
-              setNews={setNews}
-            />
+            <Layout setQuery={setQuery} query={query} setNews={setNews} />
           }
         >
           <Route
@@ -40,6 +36,8 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="/details/:name" element={<DetailsPage />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
@@ -48,5 +46,3 @@ function App() {
 }
 
 export default App;
-
-// https://newsapi.org/v2/everything?q=${query}&pageSize=10&page=${page}&apiKey=fd3aeeaa770f4c2e8293b91f3be8e429

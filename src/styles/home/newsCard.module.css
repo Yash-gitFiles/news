@@ -3,12 +3,12 @@
   border: 2px solid black;
   display: flex;
   flex-direction: column;
+  border-radius: 32px;
 }
 
 .imgContainer {
   height: 100%;
   width: 100%;
-  border: 2px solid black;
   padding: 8px;
 }
 
@@ -16,13 +16,19 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 32px;
 }
 
 .descContainer {
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
   padding: 8px;
   gap: 4px;
+  border-radius: 32px;
+  margin: 4px;
+  background-color: #c9aeaecc;
 }
 
+.title {
+  color: black;
+}

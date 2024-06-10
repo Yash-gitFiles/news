@@ -5,8 +5,8 @@
 }
 
 .imgContainer {
-  width: 50vw;
-  height: 90vh;
+  width: 600px;
+  height: 500px;
   padding: 16px;
 }
 
@@ -19,4 +19,14 @@
 
 .descContainer {
   padding: 16px;
+}
+
+.title {
+  color: black;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }

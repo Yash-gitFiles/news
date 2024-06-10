@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/layout/navbar.module.css";
 import { getNews } from "../services/apiServices";
+import styles from "../styles/layout/navbar.module.css";
 
-function NavbarComponents({ query, setQuery, news, setNews, handleClick }) {
+function NavbarComponents({ query, setQuery, setNews, handleClick }) {
   function handleChange(e) {
     setQuery(e.target.value);
   }
@@ -15,9 +15,6 @@ function NavbarComponents({ query, setQuery, news, setNews, handleClick }) {
     });
   }
 
-  console.log(news);
-
-  console.log(query);
   return (
     <div className={styles.container}>
       <div className={styles.logoContainer}>
@@ -46,6 +43,7 @@ function NavbarComponents({ query, setQuery, news, setNews, handleClick }) {
         <Link to="/">home</Link>
         <Link to="about">About</Link>
         <Link to="contact">Contact</Link>
+        <Link to="register">Login/Register</Link>
       </div>
     </div>
   );

@@ -1,0 +1,41 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 8px;
+}
+
+.para {
+  color: red;
+  font-size: 2rem;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.formContainer > input {
+  padding: 8px;
+  border-radius: 16px;
+  border: 1.2px solid black;
+}
+
+.pass {
+  position: relative;
+}
+
+.pass > div {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+
+.hideShow {
+  display: flex;
+  gap: 8px;
+}

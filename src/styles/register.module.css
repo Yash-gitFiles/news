@@ -1,0 +1,50 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 8px;
+}
+
+.para {
+  color: red;
+  font-size: 2rem;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 16px;
+  border: 1.2px solid black;
+}
+
+p {
+  color: red;
+}
+
+h5 {
+  color: #3e91e9;
+}
+
+.password {
+  display: flex;
+  gap: 8px;
+}
+
+.hidePassword {
+  position: relative;
+}
+
+.hidePassword > div {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  cursor: pointer;
+}
