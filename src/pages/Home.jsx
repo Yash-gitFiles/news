@@ -10,15 +10,19 @@ function Home({ news, setNews }) {
     });
   }, []);
 
-  if (!news) return null;
+  if (!news) return;
   return (
     <div className={styles.containerOuter}>
-      <span> Total News : </span> {news.articles.length}
-      <div className={styles.container}>
-        {news.articles.map((value, index) => {
-          return <NewsCard key={index} news={value} />;
-        })}
-      </div>
+      <span> Total News : </span> {news?.articles?.length}
+      {news && news.articles ? (
+        <div className={styles.container}>
+          {news.articles.map((value, index) => {
+            return <NewsCard key={index} news={value} />;
+          })}
+        </div>
+      ) : (
+        <div>City Not Found</div>
+      )}
     </div>
   );
 }

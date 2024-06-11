@@ -2,8 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getNews } from "../services/apiServices";
 import styles from "../styles/layout/navbar.module.css";
+import { signOut } from "firebase/auth";
+import { auth } from "../services/firebaseServices";
 
 function NavbarComponents({ query, setQuery, setNews, handleClick }) {
+  async function handleLogOut() {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("user");
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   function handleChange(e) {
     setQuery(e.target.value);
   }
@@ -44,6 +55,7 @@ function NavbarComponents({ query, setQuery, setNews, handleClick }) {
         <Link to="about">About</Link>
         <Link to="contact">Contact</Link>
         <Link to="register">Login/Register</Link>
+        <button onClick={handleLogOut}>Log Out</button>
       </div>
     </div>
   );

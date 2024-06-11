@@ -1,12 +1,9 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import styles from "../styles/login.module.css";
-import { Link } from "react-router-dom";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth } from "../services/firebaseServices";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { auth } from "../services/firebaseServices";
+import styles from "../styles/login.module.css";
 
 function Login() {
   const [password, setPassword] = useState(false);
@@ -21,12 +18,14 @@ function Login() {
       const email = data["email"];
       const password = data["password"];
 
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const result = await signInWithEmailAndPassword(auth, email, password);
       console.log("result", result);
+
+      if (result.user) {
+        localStorage.setItem("user", JSON.stringify(result.user));
+      } else {
+        localStorage.removeItem("user");
+      }
     } catch (error) {
       console.log("login fail");
     }
@@ -81,31 +80,23 @@ function Login() {
                 value: true,
                 message: "Password is required",
               },
-              pattern: {
-                value:
-                  // /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                  // /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  // /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                  `${
-                    (String.fromCharCode(Math.floor(Math.random() * 26) + 65),
-                    String.fromCharCode(Math.floor(Math.random() * 26) + 97),
-                    Math.floor(Math.random() * 9),
-                    String.fromCharCode(Math.floor(Math.random() * 15) + 33))
-                  }`,
-                message: "Please create a strong password",
-              },
-              minLength: {
-                value: 8,
-                message: "password minimum 8 charater",
-              },
-              max: {
-                value: 10,
-                message: "password maximu 10 charater",
-              },
+              // pattern: {
+              //   value:
+              //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+              //   message: "Please create a strong password",
+              // },
+              // minLength: {
+              //   value: 6,
+              //   message: "password minimum 6 charater",
+              // },
+              // maxLength: {
+              //   value: 10,
+              //   message: "password maximum 10 charater",
+              // },
             })}
           />
           <div className={styles.hideShow} onClick={handleHidePassword}>
-            <h5>{password ? "Hide" : "Show"}</h5>
+            {/* <h5>{password ? "Hide" : "Show"}</h5> */}
             {password ? (
               <i className="fa-solid fa-eye-slash"></i>
             ) : (
@@ -128,5 +119,5 @@ export default Login;
 
 // String.fromCharCode(Math.floor(Math.random() * 26) + 65)
 // String.fromCharCode(Math.floor(Math.random() * 26) + 97)
-// Math.floor(Math.random() * 9);
+// Math.floor(Math.random() * 9)
 // String.fromCharCode(Math.floor(Math.random() * 15) + 33)

@@ -1,0 +1,8 @@
+.btnContainer {
+  position: fixed;
+  top: 90%;
+  left: 93%;
+}
+.btnContainer button {
+  padding: 12px;
+}

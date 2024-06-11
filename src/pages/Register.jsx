@@ -21,17 +21,21 @@ function Register() {
       const email = data["email"];
       const password = data["password"];
 
-      // console.log(data);
-      // console.log(password);
-
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      console.log("result", result);
+      alert("Succesfully");
+
+      if (result.user) {
+        localStorage.setItem("user", JSON.stringify(result.user));
+      } else {
+        localStorage.removeItem("user");
+        throw new Error();
+      }
     } catch (error) {
-      console.log("registration fail");
+      alert("registration fail");
     }
   }
 
@@ -90,29 +94,21 @@ function Register() {
               },
               pattern: {
                 value:
-                  // /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                  // /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  // /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                  `${
-                    (String.fromCharCode(Math.floor(Math.random() * 26) + 65),
-                    String.fromCharCode(Math.floor(Math.random() * 26) + 97),
-                    Math.floor(Math.random() * 9),
-                    String.fromCharCode(Math.floor(Math.random() * 15) + 33))
-                  }`,
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
                 message: "Please create a strong password",
               },
               minLength: {
-                value: 8,
-                message: "password minimum 8 charater",
+                value: 6,
+                message: "password minimum 6 charater",
               },
               maxLength: {
                 value: 10,
-                message: "password maximu 10 charater",
+                message: "password maximum 10 charater",
               },
             })}
           />
           <div className={styles.password} onClick={handleHidePassword}>
-            <h5>{hidePassword ? "Hide" : "Show"}</h5>
+            {/* <h5>{hidePassword ? "Hide" : "Show"}</h5> */}
             {hidePassword ? (
               <i className="fa-solid fa-eye-slash"></i>
             ) : (
@@ -142,7 +138,7 @@ function Register() {
             })}
           />
           <div className={styles.password} onClick={handleHideConfirmPassword}>
-            <h5>{hideConfirmPassword ? "Hide" : "Show"}</h5>
+            {/* <h5>{hideConfirmPassword ? "Hide" : "Show"}</h5> */}
             {hideConfirmPassword ? (
               <i className="fa-solid fa-eye-slash"></i>
             ) : (
