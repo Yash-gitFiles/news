@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NewsCard from "../components/home/NewsCard";
 import { getNews } from "../services/apiServices";
 import styles from "../styles/home/home.module.css";
